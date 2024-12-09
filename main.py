@@ -169,8 +169,10 @@ class APP:
             return
 
         # リトライ判定
-        if pyxel.btnp(pyxel.KEY_R) or pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):  # Rキーまたはタッチでリトライ
-            self.init()  # OPに戻る
+        if self.state in [self.GAMECLEAR, self.GAMEOVER]:
+            if pyxel.btnp(pyxel.KEY_R) or pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT): #Rキーまたはタッチでリトライ
+                self.init()  # OPに戻る
+            return
 
         # キー入力による移動
         previous_x = self.x
