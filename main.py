@@ -172,7 +172,7 @@ class APP:
         if self.state in [self.GAMECLEAR, self.GAMEOVER]:
             if pyxel.btnp(pyxel.KEY_R) or pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT): #Rキーまたはタッチでリトライ
                 self.init()  # OPに戻る
-            return
+            #return 猫増殖バグ
 
         # キー入力による移動
         previous_x = self.x
