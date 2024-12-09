@@ -164,24 +164,24 @@ class APP:
 
         # オープニング
         if self.state == self.OPENING:
-            if pyxel.btnp(pyxel.KEY_SPACE):  # スペースキーでゲーム開始
+            if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):  # スペースキーまたはタッチでゲーム開始
                 self.state = self.MAIN
             return
 
         # リトライ判定
-        if pyxel.btnp(pyxel.KEY_R):
+        if pyxel.btnp(pyxel.KEY_R) or pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):  # Rキーまたはタッチでリトライ
             self.init()  # OPに戻る
 
         # キー入力による移動
         previous_x = self.x
         previous_y = self.y
-        if pyxel.btnp(pyxel.KEY_LEFT):
+        if pyxel.btnp(pyxel.KEY_LEFT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
             self.x -= 1
-        if pyxel.btnp(pyxel.KEY_RIGHT):
+        if pyxel.btnp(pyxel.KEY_RIGHT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
             self.x += 1
-        if pyxel.btnp(pyxel.KEY_UP):
+        if pyxel.btnp(pyxel.KEY_UP) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_UP):
             self.y -= 1
-        if pyxel.btnp(pyxel.KEY_DOWN):
+        if pyxel.btnp(pyxel.KEY_DOWN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_DOWN):
             self.y += 1
 
         # はみ出し判定
@@ -261,7 +261,7 @@ class APP:
             for i, (x, y) in enumerate(self.title_positions):
                 pyxel.text(x, y, "STRAY STEPS"[i], 9, self.umplus10)
 
-            pyxel.text(24, 80, "PRESS SPACE TO START", 7)
+            pyxel.text(8, 80, "PRESS SPACE OR CLICK TO START", 7)
             return
 
         # スコアリザルト表示
@@ -283,7 +283,7 @@ class APP:
                     pyxel.blt(cat_x, cat_y, 0, 16, 0, 16, 16, 13)
 
             pyxel.text(24, 60, f"SCORE: {int(self.score)}", 7)
-            pyxel.text(24, 80, "PRESS R TO RETRY", 7)
+            pyxel.text(14, 80, "PRESS R OR CLICK TO RETRY", 7)
             return
 
         pyxel.cls(6)  # 黒背景
